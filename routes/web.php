@@ -13,9 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'PagesController@index');
+Route::get('/about','PagesController@about');
+Route::get('/services','PagesController@services');
+
+
+
+/*
+Route::get('/users/{id}/{name}', function($id, $name) {
+  return 'This is user '.$name. ' with an id of '.$id;
 });
+*/
 
 Auth::routes();
 

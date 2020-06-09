@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -35,6 +36,7 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -73,7 +75,10 @@
         </nav>
 
         <main class="py-4">
+          @include('inc/navbar')
+          <div class="container">
             @yield('content')
+          </div>
         </main>
     </div>
 </body>
