@@ -36,7 +36,7 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-                    
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -77,6 +77,7 @@
         <main class="py-4">
           @include('inc/navbar')
           <div class="container">
+            @include('inc.messages')
             @yield('content')
           </div>
         </main>
