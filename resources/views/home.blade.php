@@ -14,6 +14,30 @@
                         </div>
                     @endif
                     <h3>Your Posts</h3>
+                    @if(count($posts)>0)
+                    <table class="table table-striped">
+                      <tr>
+                        <th>Title</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      @foreach($posts as $post)
+                        <tr>
+                          <td>{{$post->title}}</td>
+                          <td><a href="/newapp/public/posts/{{$post->id}}/edit" class="btn btn-secondary">Edit</a></td>
+                          <td>
+                            {!!Form::open(['action' => ['PostsController@destroy', $post->id],'method' => 'POST', 'class' =>'pull-right'])!!}
+                              {{Form::hidden('_method', 'DELETE')}}
+                              {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                            {!!Form::close()!!}
+                          </td>
+                        </tr>
+                      @endforeach
+                    </table>
+                    @else
+                    <hr>
+                    <h4>You Have No Posts :(</h4>
+                    @endif
                 </div>
             </div>
         </div>
