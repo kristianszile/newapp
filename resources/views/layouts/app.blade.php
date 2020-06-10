@@ -52,7 +52,7 @@
                             @endif
                         @else
                         <li class="nav-item">
-                          <a class="navbar-brand" href="/newapp/public/posts/create">Create Post</a>
+                          <a class="navbar-brand" href="/newapp/public/posts/create">Create Art Post</a>
                         </li>
                         <li class="nav-item">
                           <a class="navbar-brand" href="/newapp/public/home">Your Home</a>

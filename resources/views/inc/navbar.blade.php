@@ -12,9 +12,6 @@
         <a class="navbar-brand" href="/newapp/public/about">Resources</a>
       </li>
       <li class="nav-item">
-        <a class="navbar-brand" href="/newapp/public/services">Services</a>
-      </li>
-      <li class="nav-item">
         <a class="navbar-brand" href="/newapp/public/posts">All Posts</a>
       </li>
     </ul>

@@ -17,7 +17,8 @@ Route::get('/', 'PagesController@index');
 Route::get('/about','PagesController@about');
 Route::get('/services','PagesController@services');
 
-Route::resource('posts', 'PostsController');
+Route::resource('posts', 'PostsController'); //automatically creates routes to the controller
+Route::resource('comments', 'CommentsController'); //automatically creates routes to the controller
 
 
 

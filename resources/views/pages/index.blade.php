@@ -6,7 +6,6 @@
     <h1>Welcome To ArtPop</h1>
   </div>
   <hr>
-  <br>
   <h3>This is a site dedicated to sharing YOUR artworks, giving constructive
      critiques and giving YOU some useful resources to improve your art!</h3>
   <br>
