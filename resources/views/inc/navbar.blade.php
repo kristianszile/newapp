@@ -9,7 +9,7 @@
         <a class="navbar-brand" href="/newapp/public">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="navbar-brand" href="/newapp/public/about">About</a>
+        <a class="navbar-brand" href="/newapp/public/about">Resources</a>
       </li>
       <li class="nav-item">
         <a class="navbar-brand" href="/newapp/public/services">Services</a>

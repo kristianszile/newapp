@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header"><h3>Dashboard</h3></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -24,7 +25,7 @@
                       @foreach($posts as $post)
                         <tr>
                           <td>{{$post->title}}</td>
-                          <td><a href="/newapp/public/posts/{{$post->id}}/edit" class="btn btn-secondary">Edit</a></td>
+                          <td><a href="/newapp/public/posts/{{$post->id}}/edit" class="btn btn-primary">Edit Text</a></td>
                           <td>
                             {!!Form::open(['action' => ['PostsController@destroy', $post->id],'method' => 'POST', 'class' =>'pull-right'])!!}
                               {{Form::hidden('_method', 'DELETE')}}

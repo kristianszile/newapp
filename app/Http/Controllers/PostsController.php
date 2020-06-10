@@ -8,6 +8,11 @@ use DB;
 
 class PostsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,15 +49,27 @@ class PostsController extends Controller
     {
         $this->validate($request, [       //basic validation
           'title' => 'required',
-          'body' => 'required'
+          'body' => 'required',
+          'cover_image' => 'image|nullable|max:1999'
         ]);
+
+        if($request->hasFile('cover_image')) {
+          $filenameWithExt = $request->file('cover_image')->getClientOriginalName(); //gets the filename+extension
+          $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); //gets the file name
+          $extension = $request->file('cover_image')->getClientOriginalExtension(); //gets the extension
+          $fileNameToStore = $filename.'_'.time().'.'.$extension; //filename to store
+          $path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore); //uploads the image
+        } else {
+          $fileNameToStore = 'noimage.jpg';
+        }
         //create posts
-        $post = new Post;
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->user_id = auth()->user()->id;
-        $post->save();
-        return redirect('/posts')->with('success','Post Created!');
+        $post = new Post;  //creates an object called post
+        $post->title = $request->input('title'); //inputs the title
+        $post->body = $request->input('body'); //inputs the body
+        $post->user_id = auth()->user()->id; //inputs the user id
+        $post->cover_image = $fileNameToStore; //inputs the image
+        $post->save(); //saves to the database
+        return redirect('/posts')->with('success','Post Created!'); //returns the user to the posts page
     }
 
     /**
@@ -76,6 +93,9 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        if(auth()->user()->id !==$post->user->id) {
+          return redirect('/posts')->with('error','Cannot Access');
+        }
         return view('posts.edit')->with('post',$post);
     }
 
@@ -109,6 +129,9 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        if(auth()->user()->id !==$post->user->id) {
+          return redirect('/posts')->with('error','Cannot Access');
+        }
         $post->delete();
         return redirect('/posts')->with('success','Post Removed!');
     }

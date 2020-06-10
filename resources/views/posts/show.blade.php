@@ -1,19 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-<a href="/newapp/public/posts" class="btn">Go Back</a>
+<a href="/newapp/public/posts" class="btn btn-secondary">Go Back</a>
+<hr>
   <h1>{{$post->title}}</h1>
+    <img style="width:100%" src="/newapp/public/storage/cover_images/{{$post->cover_image}}">
+    <br>
+    <br>
   <div>
-    {{$post->body}}
+    <h3>{{$post->body}}</h3>
   </div>
   <hr>
-    <small>Written on {{$post->created_at}}</small>
+    <p>{{$post->created_at}}</p>
   <hr>
-  <a href="/newapp/public/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a>
-  <div class="float-right">
-  {!!Form::open(['action' => ['PostsController@destroy', $post->id],'method' => 'POST', 'class' =>'pull-right'])!!}
-    {{Form::hidden('_method', 'DELETE')}}
-    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-  {!!Form::close()!!}
+  @if(!Auth::guest())
+    @if(Auth::user()->id == $post->user->id)
+      <a href="/newapp/public/posts/{{$post->id}}/edit" class="btn btn-primary">Edit Text</a>
+      <div class="float-right">
+        {!!Form::open(['action' => ['PostsController@destroy', $post->id],'method' => 'POST', 'class' =>'pull-right'])!!}
+          {{Form::hidden('_method', 'DELETE')}}
+          {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+        {!!Form::close()!!}
+      @endif
+    @endif
 </div>
 @endsection
