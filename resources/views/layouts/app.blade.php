@@ -51,6 +51,12 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                          <a class="navbar-brand" href="/newapp/public/posts/create">Create Post</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="navbar-brand" href="/newapp/public/home">Your Home</a>
+                        </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -75,7 +81,7 @@
         </nav>
 
         <main class="py-4">
-          @include('inc/navbar')
+          @include('inc.navbar')
           <div class="container">
             @include('inc.messages')
             @yield('content')

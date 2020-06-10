@@ -17,9 +17,6 @@
       <li class="nav-item">
         <a class="navbar-brand" href="/newapp/public/posts">All Posts</a>
       </li>
-      <li class="nav-item">
-        <a class="navbar-brand" href="/newapp/public/posts/create">Create Post</a>
-      </li>
     </ul>
   </div>
 </nav>
